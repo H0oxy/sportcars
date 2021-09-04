@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 import re
 
 
-class PhoneValidator(phone):
+class PhoneValidator(Phone):
         pattern = re.compile(r"(?:\+7|8)(?:-\d{2,3}){4}")
 
 
