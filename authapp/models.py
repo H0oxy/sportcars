@@ -19,6 +19,6 @@ class UserProfile(AbstractUser):
     )
 
     date_birth = models.DateField(_('birth date'), null=True)
-    phone_number = models.CharField(validators=[PhoneValidator])
+    # phone_number = models.CharField(validators=[PhoneValidator])
     gender = models.CharField(_('gender'), max_length=1,
                               choices=GENDER_CHOICES, blank=True)
