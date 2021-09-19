@@ -1,39 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ProjectList from "./components/Project";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
+
+const projectsMock = [
+    {'manufacturer': "Tesla", 'model': "Model 3", 'price': "4 000 000 ₽", 'created': "2021-09-02"},
+    {'manufacturer': "Audi", 'model': "RS7 Sportback", 'price': "10 145 000 ₽", 'created': '2021-09-07'},
+    {'manufacturer': "Porsche", 'model': "911 Carrera", 'price': "8 790 000 ₽", 'created': '2021-09-16'},
+];
+
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);  // parent constructor
+        this.state = {
+            manufacturer: [],
+            projects: [],
+            tasks: [],
+        };
+    }
+
+    componentDidMount() {
+        // call API
+        this.setState({
+            projects: projectsMock
+        })
+    }
+
+    render() {
+        console.log('state', this.state);
+        return (
+            <div>
+                <Header/>
+                Sportcars
+                <ProjectList projects={this.state.projects}/>
+                <Footer/>
+            </div>
+        )
+    }
 }
-
-function currentTime() {
-  var date = new Date(); /* creating object of Date class */
-  var hour = date.getHours();
-  var min = date.getMinutes();
-  var sec = date.getSeconds();
-  hour = updateTime(hour);
-  min = updateTime(min);
-  sec = updateTime(sec);
-  document.getElementById("clock").innerText = hour + " : " + min + " : " + sec; /* adding time to the div */
-    var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
-
-}
-
-function updateTime(k) {
-  if (k < 10) {
-    return "0" + k;
-  }
-  else {
-    return k;
-  }
-}
-
-currentTime(); /* calling currentTime() function to initiate the process */
-
 
 export default App;

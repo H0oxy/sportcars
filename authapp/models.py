@@ -20,7 +20,7 @@ class UserProfile(AbstractUser):
 
 #    phone_pattern = RegexValidator(regex=r"(?:\+7|8)(\d{2,3}){4}")
     date_birth = models.DateField(_('birth date'), null=True)
-    phone_number = models.CharField(_('phone number'), max_length=12, blank=True)   # (blank=True, max_length=12, validators=[phone_pattern])
+    # phone_number = models.CharField(_('phone number'), max_length=12, blank=True)   # (blank=True, max_length=12, validators=[phone_pattern])
     gender = models.CharField(_('gender'), max_length=1,
                               choices=GENDER_CHOICES, blank=True)
 
