@@ -1,15 +1,17 @@
 from rest_framework.serializers import ModelSerializer
 
-from mainapp.models import Project, ProjectTask
+from mainapp.models import Manufacturer, Car
 
 
-class ProjectSerializer(ModelSerializer):
+class ManufacturerSerializer(ModelSerializer):
     class Meta:
-        model = Project
+        model = Manufacturer
         fields = '__all__'
 
 
-class ProjectTaskSerializer(ModelSerializer):
+class CarSerializer(ModelSerializer):
     class Meta:
-        model = ProjectTask
+        model = Car
         fields = '__all__'
+
+

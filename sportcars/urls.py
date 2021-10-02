@@ -7,12 +7,12 @@ import mainapp.views as mainapp
 
 router = DefaultRouter()
 router.register('users', authapp.UserViewSet)
-router.register('projects', mainapp.ProjectViewSet)
-router.register('project-tasks', mainapp.ProjectTaskViewSet)
+router.register('manufacturer', mainapp.ManufacturerViewSet)
+router.register('car', mainapp.CarViewSet)
 
 urlpatterns = [
-    path('', mainapp.ProjectList.as_view()),
-    path('project/tasks/', mainapp.ProjectTaskList.as_view()),
+    path('', mainapp.ManufacturerList.as_view()),
+    path('manufacturer/car/', mainapp.CarList.as_view()),
 
     path('api/', include(router.urls)),
 

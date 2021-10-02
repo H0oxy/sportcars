@@ -1,23 +1,23 @@
 from django.views.generic import ListView
 from rest_framework.viewsets import ModelViewSet
 
-from mainapp.models import Project, ProjectTask
-from mainapp.serializers import ProjectSerializer, ProjectTaskSerializer
+from mainapp.models import Manufacturer, Car
+from mainapp.serializers import ManufacturerSerializer, CarSerializer
 
 
-class ProjectList(ListView):
-    model = Project
+class ManufacturerList(ListView):
+    model = Manufacturer
 
 
-class ProjectTaskList(ListView):
-    model = ProjectTask
+class CarList(ListView):
+    model = Car
 
 
-class ProjectViewSet(ModelViewSet):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+class ManufacturerViewSet(ModelViewSet):
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
 
 
-class ProjectTaskViewSet(ModelViewSet):
-    queryset = ProjectTask.objects.all()
-    serializer_class = ProjectTaskSerializer
+class CarViewSet(ModelViewSet):
+    queryset = Car.objects.all()
+    serializer_class = CarSerializer

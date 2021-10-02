@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mainapp.models import Project, ProjectTask
+from mainapp.models import Manufacturer, Car
 
-admin.site.register(Project)
-admin.site.register(ProjectTask)
+admin.site.register(Manufacturer)
+admin.site.register(Car)
