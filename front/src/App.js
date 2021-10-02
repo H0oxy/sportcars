@@ -1,4 +1,4 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import {BrowserRouter as Router, NavLink as Link, Route} from 'react-router-dom';
 import Header from "./components/Header";
@@ -255,25 +255,36 @@ class App extends React.Component {
             <div className="main">
                 <Router>
                   <Header/>
-                  <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
 
-                      <ul className="nav nav-pills">
-                        <Link to={"/"}
-                              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                            Sportcars
-                        </Link>
-                        <li className="nav-item">
-                            <Link to={"/users"}>Users</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/cars"}>Cars</Link>
-                        </li>
-                      </ul>
+                 <header>
+                  <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="container-fluid">
+                      <Link to={"/"}>Sportcars</Link>
+                      <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                              aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                      </button>
+                      <div className="collapse navbar-collapse" id="navbarText">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="#"><Link to={"/cars"}>Cars</Link></a>
+                          </li>
+                          <li className="nav-item">
+                            <a className="nav-link" href="#"><Link to={"/users"}>Users</Link></a>
+                          </li>
+                        </ul>
+                        <span className="navbar-text">
+                        </span>
+                      </div>
+                    </div>
+                  </nav>
+
 
                   </header>
 
                   <Route exact path="/users">
-                        {/*<UserList users={this.state.users}/>*/}
+                        <UserList users={this.state.users}/>
                   </Route>
                   <Route exact path="/cars">
                         <CarsList cars={this.state.car}/>
