@@ -1,41 +1,40 @@
-const Project = ({project}) => {
-    console.log('project:', project);
+const Car = ({car}) => {
+    console.log('car:', car);
     return (
         <tr className="project-row">
             <td>
-                {project.manufacturer}
+                {car.manufacturer}
             </td>
             <td>
-                {project.model}
+                {car.model}
             </td>
             <td>
-                {project.price}
+                {car.price}
             </td>
             <td>
-                {project.created}
+                {car.max_speed}
             </td>
         </tr>
     )
 }
 
-const ProjectList = ({projects}) => {
-    console.log('projects:', projects);
+const carList = ({cars}) => {
+    console.log('car:', cars);
     return (
-        <table className={"project-list"}>
+        <table className={"Cars"}>
             <thead>
             <tr>
                 <th>Manufacturer</th>
                 <th>Model</th>
                 <th>Price</th>
-                <th>Created</th>
+                <th>Speed</th>
             </tr>
             </thead>
-            <tbody>
-            {/*{projects.map(Project)}*/}
-            {projects.map((project) => <Project key={project.name} project={project}/>)}
-            </tbody>
+            <body>
+                {cars.map((car) => <Car key={car.manufacturer} car={car}/>)}
+            </body>
         </table>
     )
 }
 
-export default ProjectList;
+export default carList;

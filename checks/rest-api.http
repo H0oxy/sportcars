@@ -1,0 +1,15 @@
+GET http://localhost:8000/api/car/
+Accept: application/json
+
+<> 2021-10-02T183731.200.json
+
+###
+GET http://localhost:8000/api/manufacturer/
+Accept: application/json
+
+
+
+###
+GET http://localhost:8000/api/users/
+Accept: application/json
+

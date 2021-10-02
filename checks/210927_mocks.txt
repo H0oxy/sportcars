@@ -1,89 +1,5 @@
-import React from 'react';
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ProjectList from "./components/Project";
-
-const usersMock = [
-  {
-    "id": 1,
-    "username": "kpk",
-    "email": "kpk.kss45@mail.ru",
-    "first_name": "",
-    "last_name": "",
-    "gender": "",
-    "date_birth": null
-  },
-  {
-    "id": 2,
-    "username": "user1",
-    "email": "",
-    "first_name": "",
-    "last_name": "",
-    "gender": "m",
-    "date_birth": "2021-09-04"
-  },
-  {
-    "id": 3,
-    "username": "user2",
-    "email": "",
-    "first_name": "",
-    "last_name": "",
-    "gender": "m",
-    "date_birth": "2021-09-04"
-  },
-  {
-    "id": 4,
-    "username": "user3",
-    "email": "",
-    "first_name": "",
-    "last_name": "",
-    "gender": "f",
-    "date_birth": "2021-09-04"
-  },
-  {
-    "id": 5,
-    "username": "user4",
-    "email": "",
-    "first_name": "",
-    "last_name": "",
-    "gender": "f",
-    "date_birth": "2021-09-04"
-  },
-  {
-    "id": 6,
-    "username": "user5",
-    "email": "",
-    "first_name": "",
-    "last_name": "",
-    "gender": "f",
-    "date_birth": "2021-09-04"
-  }
-];
-
-const manufacturersMock = [
-  {
-    "id": 1,
-    "name": "Audi"
-  },
-  {
-    "id": 2,
-    "name": "Tesla"
-  },
-  {
-    "id": 3,
-    "name": "Porsche"
-  },
-  {
-    "id": 4,
-    "name": "Lamborghini"
-  },
-  {
-    "id": 5,
-    "name": "McLaren"
-  }
-];
-
-const carsMock = [
+/api/car/
+[
   {
     "id": 1,
     "model": "A4",
@@ -219,39 +135,89 @@ const carsMock = [
     "desc": "Дизайн родстера максимально близок к облику купе 720S, но задние стойки даже с поднятым верхом выдают его. И специально для новичка компания придумала оригинальный рисунок кованых десятиспицевых колёсных дисков",
     "car_brand": 5
   }
-];
+]
 
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);  // parent constructor
-        this.state = {
-            manufacturer: [],
-            model: [],
-            price: [],
-        };
-    }
 
-    componentDidMount() {
-        // call API
-        this.setState({
-            manufacturer: manufacturersMock,
-            car: carsMock,
-            user: usersMock
-        })
-    }
+/api/manufacturer/
+[
+  {
+    "id": 1,
+    "name": "Audi"
+  },
+  {
+    "id": 2,
+    "name": "Tesla"
+  },
+  {
+    "id": 3,
+    "name": "Porsche"
+  },
+  {
+    "id": 4,
+    "name": "Lamborghini"
+  },
+  {
+    "id": 5,
+    "name": "McLaren"
+  }
+]
 
-    render() {
-        console.log('state', this.state);
-        return (
-            <div>
-                <Header/>
-                Sportcars
-                <CarsList cars={this.state.Car}/>
-                <Footer/>
-            </div>
-        )
-    }
-}
 
-export default App;
+/api/users/
+[
+  {
+    "id": 1,
+    "username": "kpk",
+    "email": "kpk.kss45@mail.ru",
+    "first_name": "",
+    "last_name": "",
+    "gender": "",
+    "date_birth": null
+  },
+  {
+    "id": 2,
+    "username": "user1",
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "gender": "m",
+    "date_birth": "2021-09-04"
+  },
+  {
+    "id": 3,
+    "username": "user2",
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "gender": "m",
+    "date_birth": "2021-09-04"
+  },
+  {
+    "id": 4,
+    "username": "user3",
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "gender": "f",
+    "date_birth": "2021-09-04"
+  },
+  {
+    "id": 5,
+    "username": "user4",
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "gender": "f",
+    "date_birth": "2021-09-04"
+  },
+  {
+    "id": 6,
+    "username": "user5",
+    "email": "",
+    "first_name": "",
+    "last_name": "",
+    "gender": "f",
+    "date_birth": "2021-09-04"
+  }
+]
