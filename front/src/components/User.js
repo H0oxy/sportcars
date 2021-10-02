@@ -1,7 +1,7 @@
 const User = ({user}) => {
-    console.log('project:', user);
+    // console.log('user:', user);
     return (
-        <tr className="project-row">
+        <tr className="user-row">
             <td>
                 {user.id}
             </td>
@@ -11,29 +11,30 @@ const User = ({user}) => {
             <td>
                 {user.date_birth}
             </td>
-
         </tr>
     )
 }
 
 const UserList = ({users}) => {
-    console.log('projects:', users);
+    // console.log('users:', users);
     return (
-        <table className={"Cars"}>
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>username</th>
-                <th>date bitrh</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            {/*{projects.map(Project)}*/}
-            {users.map((user) => <User key={user.id} user={user}/>)}
-            </tbody>
-        </table>
+        <div className="user-list">
+            <h1>Users</h1>
+            <table className="user-list__table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>username</th>
+                    <th>date birth</th>
+                </tr>
+                </thead>
+                <tbody>
+                {users.map((user) => <User key={user.id} user={user}/>)}
+                </tbody>
+            </table>
+        </div>
     )
 }
+
 
 export default UserList;

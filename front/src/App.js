@@ -1,8 +1,10 @@
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import {BrowserRouter as Router, NavLink as Link, Route} from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CarsList from "./components/Project";
-import UserList from "./components/Project";
+import UserList from "./components/User";
 
 const usersMock = [
   {
@@ -92,7 +94,7 @@ const carsMock = [
     "price": "2 835 000",
     "release_date": "2021-10-02T12:43:38.818006Z",
     "desc": "Выразительная динамичная передняя часть, идеальные пропорции кузова и запоминающийся силуэт подчеркивают главную, спортивную составляющую характера обновленного Audi A4. Выполненный в лучших традициях марки, тщательно продуманный, функциональный и высококачественный, автомобиль оснащен новейшими информационно-развлекательными и ассистирующими системами, созданными с применением инновационных технологий. Дополняет этот быстрый «портрет» модели безупречно оформленный стильный интерьер и линейка мощных современных двигателей.",
-    "car_brand": 1
+    "car_brand": "Audi",
   },
   {
     "id": 2,
@@ -101,7 +103,7 @@ const carsMock = [
     "price": "3 935 000",
     "release_date": "2021-10-02T12:44:35.396120Z",
     "desc": "Купить обновленный Audi A5 Sportback — прекрасный способ подчеркнуть свою индивидуальность. Этот спортивный и одновременно практичный семейный пятидверный автомобиль – образец самого современного дизайна марки Audi и одновременно носитель перспективных технологий, таких, как, например, опицональные светодиодные фары Audi Matrix c Audi Laser Light и светодиодные задние фонари, с передними и задними динамическими указателями поворота, с анимацией и новая информационно-развлекательная система.",
-    "car_brand": 1
+    "car_brand": "Audi",
   },
   {
     "id": 3,
@@ -110,7 +112,7 @@ const carsMock = [
     "price": "7 360 000",
     "release_date": "2021-10-02T12:45:59.989902Z",
     "desc": "Превосходство технологий — это то, что мы обещаем всем поклонникам нашего бренда. И никогда прежде это обещание не было реализовано так разносторонне и так полно, как в Audi A8. Он знаменует собой рождение нового языка дизайна, новой концепции управления, нового уровня качества. Audi A8 представляет будущее автомобилей премиум-класса.",
-    "car_brand": 1
+    "car_brand": "Audi",
   },
   {
     "id": 4,
@@ -119,7 +121,7 @@ const carsMock = [
     "price": "3 000 000",
     "release_date": "2021-10-02T12:46:57.547140Z",
     "desc": "Революционный электромобиль, призванный полностью уничтожить двигатель внутреннего сгорания и привить человечеству желание передвигаться исключительно на экологически чистом транспорте.",
-    "car_brand": 2
+    "car_brand": "Tesla",
   },
   {
     "id": 5,
@@ -128,7 +130,7 @@ const carsMock = [
     "price": "3 500 000",
     "release_date": "2021-10-02T12:48:39.159202Z",
     "desc": "Построен на новой платформе, которая в корне отличается от Model S и Model X. Призван стать первым массовым электромобилем от Tesla Inc.",
-    "car_brand": 2
+    "car_brand": "Tesla",
   },
   {
     "id": 6,
@@ -137,7 +139,7 @@ const carsMock = [
     "price": "19 100 000",
     "release_date": "2021-10-02T12:50:01.844881Z",
     "desc": "САМЫЙ БЫСТРЫЙ АВТОМОБИЛЬ В МИРЕ С РЕКОРДНЫМ УСКОРЕНИЕМ, ДАЛЬНОСТЬЮ И ПРОИЗВОДИТЕЛЬНОСТЬЮ",
-    "car_brand": 2
+    "car_brand": "Tesla",
   },
   {
     "id": 7,
@@ -146,7 +148,7 @@ const carsMock = [
     "price": "5 060 000",
     "release_date": "2021-10-02T12:51:04.376899Z",
     "desc": "",
-    "car_brand": 3
+    "car_brand": "Porsche",
   },
   {
     "id": 8,
@@ -155,7 +157,7 @@ const carsMock = [
     "price": "8 790 000",
     "release_date": "2021-10-02T12:51:34.746195Z",
     "desc": "",
-    "car_brand": 3
+    "car_brand": "Porsche",
   },
   {
     "id": 9,
@@ -164,7 +166,7 @@ const carsMock = [
     "price": "7 970 000",
     "release_date": "2021-10-02T12:52:04.465900Z",
     "desc": "",
-    "car_brand": 3
+    "car_brand": "Porsche",
   },
   {
     "id": 10,
@@ -173,7 +175,7 @@ const carsMock = [
     "price": "16 500 000",
     "release_date": "2021-10-02T12:55:10.921115Z",
     "desc": "суперкар выделяется иным передним бампером со сплиттером и увеличенными боковыми воздухозаборниками. Последние имеют Y-образные вставки.",
-    "car_brand": 4
+    "car_brand": "Lamborghini",
   },
   {
     "id": 11,
@@ -182,7 +184,7 @@ const carsMock = [
     "price": "33 500 000",
     "release_date": "2021-10-02T12:56:26.251693Z",
     "desc": "Новый Ламборгини Авентадор S 2018 имеет съемные панели крыши, которые легко убираются и устанавливаются обратно. Масса секций не превышает 6 кг, а хранить их можно в багажном отсеке, который на суперкаре находится спереди.",
-    "car_brand": 4
+    "car_brand": "Lamborghini",
   },
   {
     "id": 12,
@@ -191,7 +193,7 @@ const carsMock = [
     "price": "33 561 211",
     "release_date": "2021-10-02T12:57:47.306985Z",
     "desc": "Ламборгини Авентадор S 2018 имеет съемные панели крыши, которые легко убираются и устанавливаются обратно. Масса секций не превышает 6 кг, а хранить их можно в багажном отсеке, который на суперкаре находится спереди",
-    "car_brand": 4
+    "car_brand": "Lamborghini",
   },
   {
     "id": 13,
@@ -200,7 +202,7 @@ const carsMock = [
     "price": "13 860 000",
     "release_date": "2021-10-02T13:00:35.307105Z",
     "desc": "Суперкар появился в 2019 году, производитель McLaren (Мсларен), располагающийся в стране Великобритания. Двигатель McLaren 600LT объёмом 3799 см³ развивает мощность 600 лошадиных сил, что позволяет автомобилю разгоняться до 100 километров в час за 2.9 секунды и развивать максимальную скорость 328 км/ч",
-    "car_brand": 5
+    "car_brand": "McLaren",
   },
   {
     "id": 14,
@@ -209,7 +211,7 @@ const carsMock = [
     "price": "16 407 337",
     "release_date": "2021-10-02T13:02:10.435124Z",
     "desc": "Новая модель McLaren Artura получила продуманный до мелочей обтекаемый кузов с многочисленными вентиляционными отверстиями и воздухозаводами, способствующим притоку свежего воздуха к основным силовым агрегатам.",
-    "car_brand": 5
+    "car_brand": "McLaren",
   },
   {
     "id": 15,
@@ -218,7 +220,7 @@ const carsMock = [
     "price": "21 120 000",
     "release_date": "2021-10-02T13:16:30.610932Z",
     "desc": "Дизайн родстера максимально близок к облику купе 720S, но задние стойки даже с поднятым верхом выдают его. И специально для новичка компания придумала оригинальный рисунок кованых десятиспицевых колёсных дисков",
-    "car_brand": 5
+    "car_brand": "McLaren",
   }
 ];
 
@@ -227,35 +229,63 @@ class App extends React.Component {
     constructor(props) {
         super(props);  // parent constructor
         this.state = {
-            manufacturer: [],
+            car_brand: [],
             model: [],
             price: [],
             max_speed: [],
             car: [],
+            username: [],
+            date_birth: [],
+
         };
     }
 
     componentDidMount() {
         // call API
         this.setState({
-            manufacturer: manufacturersMock,
+            manufacturers: manufacturersMock,
             car: carsMock,
-            user: usersMock
+            users: usersMock
         })
     }
 
     render() {
-        console.log('state', this.state);
+        //console.log('state', this.state);
         return (
-            <div>
-                <Header/>
-                Sportcars
-                {/*<UserList users={this.state.users}/>*/}
-                <CarsList cars={this.state.car}/>
+            <div className="main">
+                <Router>
+                  <Header/>
+                  <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+
+                      <ul className="nav nav-pills">
+                        <Link to={"/"}
+                              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                            Sportcars
+                        </Link>
+                        <li className="nav-item">
+                            <Link to={"/users"}>Users</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/cars"}>Cars</Link>
+                        </li>
+                      </ul>
+
+                  </header>
+
+                  <Route exact path="/users">
+                        {/*<UserList users={this.state.users}/>*/}
+                  </Route>
+                  <Route exact path="/cars">
+                        <CarsList cars={this.state.car}/>
+                  </Route>
+
+                </Router>
                 <Footer/>
             </div>
         )
     }
 }
+
+
 
 export default App;

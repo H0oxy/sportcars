@@ -1,9 +1,10 @@
 const Car = ({car}) => {
-    console.log('car:', car);
+//{    console.log('car:', car);}
     return (
-        <tr className="project-row">
+        <tr className="cars-list">
+
             <td>
-                {car.manufacturer}
+                {car.car_brand}
             </td>
             <td>
                 {car.model}
@@ -18,23 +19,23 @@ const Car = ({car}) => {
     )
 }
 
-const carsList = ({cars}) => {
-    console.log('car:', cars);
+const CarsList = ({cars}) => {
+    // console.log('car:', cars);
     return (
-        <table className={"Cars"}>
+        <table className={"cars-list__table"}>
             <thead>
             <tr>
                 <th>Manufacturer</th>
                 <th>Model</th>
                 <th>Price</th>
-                <th>Speed</th>
+                <th>Speed </th>
             </tr>
             </thead>
             <body>
-                {cars.map((car) => <Car key={car.manufacturer} car={car}/>)}
+                {cars.map((car) => <Car key={car.id} car={car}/>)}
             </body>
         </table>
     )
 }
 
-export default carsList;
+export default CarsList;
