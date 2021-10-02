@@ -18,7 +18,7 @@ const Car = ({car}) => {
     )
 }
 
-const carList = ({cars}) => {
+const carsList = ({cars}) => {
     console.log('car:', cars);
     return (
         <table className={"Cars"}>
@@ -37,4 +37,4 @@ const carList = ({cars}) => {
     )
 }
 
-export default carList;
+export default carsList;

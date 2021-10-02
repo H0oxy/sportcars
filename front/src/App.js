@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ProjectList from "./components/Project";
+import CarsList from "./components/Project";
+import UserList from "./components/Project";
 
 const usersMock = [
   {
@@ -229,6 +230,8 @@ class App extends React.Component {
             manufacturer: [],
             model: [],
             price: [],
+            max_speed: [],
+            car: [],
         };
     }
 
@@ -247,7 +250,8 @@ class App extends React.Component {
             <div>
                 <Header/>
                 Sportcars
-                <CarsList cars={this.state.Car}/>
+                {/*<UserList users={this.state.users}/>*/}
+                <CarsList cars={this.state.car}/>
                 <Footer/>
             </div>
         )
