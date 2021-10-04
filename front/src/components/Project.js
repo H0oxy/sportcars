@@ -28,11 +28,11 @@ const CarsList = ({cars}) => {
                 <th>Manufacturer</th>
                 <th>Model</th>
                 <th>Price</th>
-                <th>Speed </th>
+                <th>Speed</th>
             </tr>
             </thead>
             <body>
-                {cars.map((car) => <Car key={car.id} car={car}/>)}
+            {cars.map((car) => <Car key={car.id} car={car}/>)}
             </body>
         </table>
     )
