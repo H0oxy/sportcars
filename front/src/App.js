@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import CarsList from "./components/ProjectList";
 import CarsDetail from "./components/ProjectDetail"
 import UserList from "./components/UserList";
+import axios from "axios";
 
 const usersMock = [
     {
@@ -239,10 +240,17 @@ class App extends React.Component {
 
     componentDidMount() {
         // call API
+        axios
+            .get("http://localhost:8000/api/users/")
+            .then((result) => {
+                console.log('result', result)
+            })
+            .catch((error) => console.log(error));
+
         this.setState({
+            users: usersMock,
             manufacturers: manufacturersMock,
-            car: carsMock,  // Если использовать "cars", то не выводятся даныне, а с "car" все хорошо
-            users: usersMock
+            car: carsMock
         })
     }
 
