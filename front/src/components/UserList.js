@@ -16,12 +16,6 @@ const User = ({user}) => {
 }
 
 
-
-
-
-
-
-
 const UserList = ({users}) => {
     // console.log('users:', users);
     return (

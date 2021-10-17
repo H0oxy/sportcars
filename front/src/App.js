@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import {BrowserRouter as Router, NavLink as Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CarsList from "./components/Project";
-import UserList from "./components/User";
+import CarsList from "./components/ProjectList";
+import CarsDetail from "./components/ProjectDetail"
+import UserList from "./components/UserList";
 
 const usersMock = [
     {
@@ -240,7 +241,7 @@ class App extends React.Component {
         // call API
         this.setState({
             manufacturers: manufacturersMock,
-            car: carsMock,
+            car: carsMock,  // Если использовать "cars", то не выводятся даныне, а с "car" все хорошо
             users: usersMock
         })
     }
@@ -257,6 +258,9 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/cars">
                         <CarsList cars={this.state.car}/>
+                    </Route>
+                    <Route exact path="/cars/detail/:id">
+                        <CarsDetail cars={this.state.car}/>
                     </Route>
 
                 </Router>
