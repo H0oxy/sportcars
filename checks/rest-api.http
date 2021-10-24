@@ -13,3 +13,8 @@ Accept: application/json
 GET http://localhost:8000/api/users/
 Accept: application/json
 
+
+
+###
+DELETE http://localhost:8000/api/car/1/
+Accept: application/json

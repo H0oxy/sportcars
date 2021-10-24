@@ -14,7 +14,8 @@ class CarList(ListView):
 
 
 class ManufacturerViewSet(ModelViewSet):
-    queryset = Manufacturer.objects.all()
+    # queryset = Manufacturer.objects.all()
+    queryset = Manufacturer.objects.filter(is_active=True)
     serializer_class = ManufacturerSerializer
 
 

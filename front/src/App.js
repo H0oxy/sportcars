@@ -3,10 +3,13 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CarsList from "./components/ProjectList";
-import CarsDetail from "./components/ProjectDetail"
+import CarsList from "./components/CarList";
+import CarsDetail from "./components/CarDetail"
 import UserList from "./components/UserList";
 import axios from "axios";
+
+const API_URL = "http://127.0.0.1:8000";
+const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
 
 const usersMock = [
     {
@@ -238,21 +241,55 @@ class App extends React.Component {
         };
     }
 
-    componentDidMount() {
-        // call API
-        axios
-            .get("http://localhost:8000/api/users/")
-            .then((result) => {
-                console.log('result', result)
-            })
-            .catch((error) => console.log(error));
+     componentDidMount() {
+         // call API
+         axios
+             .get("http://localhost:8000/api/users/")
+             .then((result) => {
+                 console.log('result', result)
+                 this.setState({
+                     users: result.data,
+                 })
 
-        this.setState({
-            users: usersMock,
-            manufacturers: manufacturersMock,
-            car: carsMock
-        })
-    }
+             })
+             .catch((error) => console.log(error));
+
+         this.setState({
+             users: usersMock,
+             manufacturers: manufacturersMock,
+             car: carsMock
+         })
+     }
+
+//    componentDidMount() {               данные с сервера не призжают :(
+//        // call rest API
+//        axios
+//            .get(getResourceURL("users"))
+//            .then((result) => {
+//                // console.log('users result:', result)
+//                this.setState({
+//                    users: result.data
+//                })
+//            })
+//            .catch((error) => console.log(error));
+//        axios
+//            .get(getResourceURL("car"))
+//            .then((result) => {
+//                this.setState({
+//                    projects: result.data
+//                })
+//            })
+//            .catch((error) => console.log(error));
+//        axios
+//            .get(getResourceURL("manufacturers"))
+//            .then((result) => {
+//                this.setState({
+//                    tasks: result.data
+//                })
+//            })
+//            .catch((error) => console.log(error));
+//
+//    }
 
     render() {
         //console.log('state', this.state);

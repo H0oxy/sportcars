@@ -3,9 +3,16 @@ from django.db import models
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=128, unique=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     def __str__(self):
         return f'{self.name}'
+
+    def delete(self, uning=None, keep_parents=False):
+        self.is_active = False
+        self.name = f'_{self.name}'
+        self.save()
+        return 1, {} # to fix
 
     class Meta:
         verbose_name = 'Производитель'
@@ -19,9 +26,16 @@ class Car(models.Model):
     price = models.CharField(verbose_name='цена', max_length=11, default=0)
     release_date = models.DateTimeField(auto_now_add=True)
     desc = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     def __str__(self):
         return f'{self.car_brand}: {self.model}'
+
+    def delete(self, uning=None, keep_parents=False):
+        self.is_active = False
+        self.name = f'_{self.model}'
+        self.save()
+        return 1, {} # to fix
 
     class Meta:
         verbose_name = 'Автомобиль'
