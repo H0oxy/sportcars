@@ -4,10 +4,11 @@ import React from "react";
 const Header = () => {
     return (
 
-        <header>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <header className="navbar navbar-expand-lg navbar-dark bg-light bg-gragient">
+
+                        <Link to={"/"} className="navbar-brand text-dark m-2">Sportcars</Link>
                 <div className="container-fluid">
-                    <Link to={"/"}>Sportcars</Link>
+
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -16,18 +17,19 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <div className="nav-link active" aria-current="page"><Link
-                                    to={"/cars"}>Cars</Link></div>
+
+                                <Link to={"/cars"} className="btn btn-outline-dark m-2">Cars</Link>
+
                             </li>
                             <div className="nav-item">
-                                <div className="nav-link"><Link to={"/users"}>Users</Link></div>
+
+                                <Link to={"/users"} className="btn btn-outline-dark m-2">Users</Link>
+
                             </div>
                         </ul>
-                        <span className="navbar-text">
-                        </span>
                     </div>
                 </div>
-            </nav>
+
 
 
         </header>
