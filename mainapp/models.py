@@ -20,7 +20,7 @@ class Manufacturer(models.Model):
 
 
 class Car(models.Model):
-    car_brand = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    car_brand = models.ForeignKey(Manufacturer, on_delete=models.CASCADE,)
     model = models.CharField(max_length=128)
     max_speed = models.CharField(max_length=4, default=0)
     price = models.CharField(verbose_name='цена', max_length=11, default=0)
