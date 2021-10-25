@@ -34,14 +34,7 @@ class App extends React.Component {
                 })
             })
             .catch((error) => console.log(error));
-        axios
-            .get(getResourceURL("car"))
-            .then((result) => {
-                this.setState({
-                    car: result.data
-                })
-            })
-            .catch((error) => console.log(error));
+
         axios
             .get(getResourceURL("manufacturer"))
             .then((result) => {
@@ -50,6 +43,22 @@ class App extends React.Component {
                 })
             })
             .catch((error) => console.log(error));
+
+        axios
+            .get(getResourceURL("car"))
+           // var designations = [
+           //     {id: 1, name: "Tesla"},
+           //     {id: 2, name: "Porsche"},
+           //     {id: 3, name: "Lamborghini"},
+           //     {id: 4, name: "McLaren"}
+           // ];
+            .then((result) => {
+                this.setState({
+                    car: result.data
+                })
+            })
+            .catch((error) => console.log(error));
+
 
     }
 

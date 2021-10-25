@@ -16,8 +16,7 @@ const CarsDetail = ({cars, users}) => {
 
         <div className={"car-detail"}>
             <h2>car: {car.name}</h2>
-            <h3>Owner: {owner.username}</h3>
-            <p>Created: {car.created}</p>
+            <p>Created: {car.model}</p>
             <p>Updated: {car.updated}</p>
             <h4>Members:</h4>
             <ul>
