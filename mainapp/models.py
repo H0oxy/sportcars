@@ -1,7 +1,5 @@
 from django.db import models, transaction, DatabaseError
 
-from authapp.models import UserProfile
-
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=128, unique=True)
