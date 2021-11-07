@@ -1,4 +1,6 @@
-from django.db import models
+from django.db import models, transaction, DatabaseError
+
+from authapp.models import UserProfile
 
 
 class Manufacturer(models.Model):
@@ -7,12 +9,6 @@ class Manufacturer(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-
-    def delete(self, uning=None, keep_parents=False):
-        self.is_active = False
-        self.name = f'_{self.name}'
-        self.save()
-        return 1, {} # to fix
 
     class Meta:
         verbose_name = 'Производитель'
@@ -31,8 +27,19 @@ class Car(models.Model):
     def __str__(self):
         return f'{self.car_brand}: {self.model}'
 
-    def delete(self, uning=None, keep_parents=False):
+    def restore(self):
         self.is_active = False
+        self.name = self.name[1:]
+        self.save()
+        return self
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_active = False
+        with transaction.atomic() as _:
+            self.manufacturer_set.all().update(is_active=False)  # db level
+            self.name = f'_{self.name}'
+            # raise DatabaseError
+            self.save()
         self.name = f'_{self.model}'
         self.save()
         return 1, {} # to fix
