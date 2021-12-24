@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Projects</title>
+    <title>Manufacturers</title>
 </head>
 <body>
     {% if user.is_authenticated %}
@@ -10,8 +10,8 @@
     {% else %}
         <a href="{% url 'login' %}">Login</a>
     {% endif %}
-{% for project in object_list %}
-    {{ project }}
+{% for manufacturer in object_list %}
+    {{ manufacturer }}
 {% endfor %}
 </body>
 </html>
