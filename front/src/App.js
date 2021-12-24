@@ -20,16 +20,24 @@ class App extends React.Component {
             manufacturers: [],
             car: [],
             users: [],
+            accessToken: this.getAccessToken(),
 
         };
     }
 
+
     componentDidMount() {
+        this.loadState()
+    }
+
+
+    loadState() {
+        let headers = this.getHeaders();
         // call rest API
+
         axios
-            .get(getResourceURL("users"))
+            .get(getResourceURL("users"), {headers: headers})
             .then((result) => {
-                // console.log('users result:', result)
                 this.setState({
                     users: result.data
                 })
@@ -37,7 +45,7 @@ class App extends React.Component {
             .catch((error) => console.log(error));
 
         axios
-            .get(getResourceURL("manufacturer"))
+            .get(getResourceURL("manufacturer"), {headers: headers})
             .then((result) => {
                 this.setState({
                     manufacturers: result.data
@@ -46,13 +54,7 @@ class App extends React.Component {
             .catch((error) => console.log(error));
 
         axios
-            .get(getResourceURL("car"))
-           // var designations = [
-           //     {id: 1, name: "Tesla"},
-           //     {id: 2, name: "Porsche"},
-           //     {id: 3, name: "Lamborghini"},
-           //     {id: 4, name: "McLaren"}
-           // ];
+            .get(getResourceURL("car"), {headers: headers})
             .then((result) => {
                 this.setState({
                     car: result.data
@@ -63,12 +65,70 @@ class App extends React.Component {
 
     }
 
+
+    login(username, password) {
+//        console.log('do login:', username, password,);
+        axios
+            .post(getResourceURL("token"),
+                        {'username': username,'password': password})
+            .then((result) => {
+                let refreshToken = result.data.refresh;
+                let accessToken = result.data.access;
+
+                this.saveTokens(refreshToken, accessToken)
+                this.setState({accessToken: accessToken}, this.loadState)
+            })
+            .catch((error) => console.log(error));
+        }
+
+    logout() {
+            localStorage.setItem('refreshToken', null);
+            localStorage.setItem('accessToken', null);
+            this.clearState();
+    }
+
+    clearState() {
+        this.setState({
+        accessToken: null,
+        users: [],
+        manufacturer: [],
+        car: [],
+        });
+
+    }
+
+        saveTokens(refreshToken, accessToken) {
+            localStorage.setItem('refreshToken', refreshToken);
+            localStorage.setItem('accessToken', accessToken);
+//            console.log('accessToken:', localStorage.getItem('accessToken'), accessToken);
+        }
+
+        getAccessToken() {
+            return localStorage.getItem('accessToken')
+        }
+
+        isAuthenticated() {
+            return this.state.accessToken !== 'null' && this.state.accessToken !== null;
+        }
+
+        getHeaders() {
+            let headers = {
+                'Content-Type': "application/json"
+            }
+        if (this.isAuthenticated()) {
+               headers['Authorization'] = `Bearer ${this.state.accessToken}`
+        }
+        return headers;
+        }
+
+
     render() {
         //console.log('state', this.state);
         return (
             <div className="main">
                 <Router>
-                    <Header/>
+                    <Header isAuthenticated={this.isAuthenticated()}
+                        logout={() => this.logout()}/>
 
                     <Route exact path="/users">
                         <UserList users={this.state.users}/>
@@ -83,7 +143,6 @@ class App extends React.Component {
                         <LoginForm
                             login={(username, password) => this.login(username, password)}/>
                     </Route>
-
                 </Router>
                 <Footer/>
             </div>

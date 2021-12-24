@@ -1,7 +1,15 @@
 import {NavLink as Link} from "react-router-dom";
 import React from "react";
 
-const Header = () => {
+const Header = ({isAuthenticated, logout}) => {
+    let loginLink, loginTitle, loginHandler;
+    loginLink = "/login";
+    loginTitle = "login";
+    if (isAuthenticated) {
+        loginLink = "/logout";
+        loginTitle = "logout";
+        loginHandler = logout;
+    }
     return (
 
         <header className="navbar navbar-expand-lg navbar-dark bg-light bg-gragient">
@@ -25,7 +33,8 @@ const Header = () => {
                                 <Link to={"/users"} className="btn btn-outline-dark m-2">Users</Link>
                             </div>
                             <div className="nav-item">
-                                <Link to={"/login"} className="btn btn-outline-dark m-2">Login</Link>
+
+                                <Link to={loginLink} className="btn btn-outline-dark m-2" onClick={loginHandler}>{loginTitle}</Link>
                             </div>
                         </ul>
                     </div>
