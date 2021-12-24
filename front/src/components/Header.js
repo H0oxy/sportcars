@@ -22,9 +22,10 @@ const Header = () => {
 
                             </li>
                             <div className="nav-item">
-
                                 <Link to={"/users"} className="btn btn-outline-dark m-2">Users</Link>
-
+                            </div>
+                            <div className="nav-item">
+                                <Link to={"/login"} className="btn btn-outline-dark m-2">Login</Link>
                             </div>
                         </ul>
                     </div>

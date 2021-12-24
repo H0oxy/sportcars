@@ -7,6 +7,7 @@ import CarsList from "./components/CarList";
 import CarsDetail from "./components/CarDetail"
 import UserList from "./components/UserList";
 import axios from "axios";
+import LoginForm from "./components/LoginForm";
 
 const API_URL = "http://127.0.0.1:8000";
 const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
@@ -77,6 +78,10 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/cars/detail/:id">
                         <CarsDetail cars={this.state.car}/>
+                    </Route>
+                    <Route exact path="/login">
+                        <LoginForm
+                            login={(username, password) => this.login(username, password)}/>
                     </Route>
 
                 </Router>
