@@ -14,6 +14,8 @@ urlpatterns = [
     path('', mainapp.ManufacturerList.as_view()),
     path('manufacturer/car/', mainapp.CarList.as_view()),
 
+    path('auth/login', authapp.MyLogin.as_view(), name='login'),
+
     path('api/', include(router.urls)),
 
     path('admin/', admin.site.urls),

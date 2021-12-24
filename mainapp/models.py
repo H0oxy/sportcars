@@ -34,12 +34,10 @@ class Car(models.Model):
     def delete(self, using=None, keep_parents=False):
         with transaction.atomic() as _:
             self.is_active = False
-            self.manufacturer_set.all().update(is_active=False)  # db level
             self.name = f'_{self.name}'
-            # raise DatabaseError
+            self.manufacturer_set.all().update(is_active=False)  # db level
+
             self.save()
-        self.name = f'_{self.model}'
-        self.save()
         return 1, {} # to fix
 
     class Meta:
