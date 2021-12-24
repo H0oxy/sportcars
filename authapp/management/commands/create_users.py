@@ -9,4 +9,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         UserProfile.objects.create_superuser('kpk', password='pass')
         UserProfile.objects.create_user('user1', password='pass')
+
         print('users created')
