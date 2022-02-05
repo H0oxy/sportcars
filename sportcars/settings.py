@@ -63,7 +63,7 @@ ROOT_URLCONF = 'sportcars.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'frontapp'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
