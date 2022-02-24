@@ -4,8 +4,8 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-import backend.authapp.views as authapp
-from backend import mainapp as mainapp
+import authapp.views as authapp
+import mainapp.views as mainapp
 
 router = DefaultRouter()
 router.register('users', authapp.UserViewSet)

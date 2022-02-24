@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
 
-from backend.authapp.models import UserProfile
+from authapp.models import UserProfile
 
 
 class MyAuthForm(AuthenticationForm):

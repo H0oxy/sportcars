@@ -2,8 +2,8 @@ from django.views.generic import ListView
 from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
-from backend.mainapp.models import Manufacturer, Car
-from backend.mainapp.serializers import ManufacturerSerializer, CarSerializer
+from mainapp.models import Manufacturer, Car
+from mainapp.serializers import ManufacturerSerializer, CarSerializer
 
 
 class ManufacturerList(ListView):

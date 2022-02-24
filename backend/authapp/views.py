@@ -1,9 +1,9 @@
 from django.contrib.auth.views import LoginView
 from rest_framework.viewsets import ModelViewSet
 
-from backend.authapp.forms import MyAuthForm
-from backend.authapp.models import UserProfile
-from backend.authapp.serializers import UserProfileSerializer
+from authapp.forms import MyAuthForm
+from authapp.models import UserProfile
+from authapp.serializers import UserProfileSerializer
 
 
 class UserViewSet(ModelViewSet):

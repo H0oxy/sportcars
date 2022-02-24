@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from backend.mainapp.models import Manufacturer, Car
+from mainapp.models import Manufacturer, Car
 
 admin.site.register(Manufacturer)
 admin.site.register(Car)

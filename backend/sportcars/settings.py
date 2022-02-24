@@ -39,12 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3thd part apps
     'rest_framework',
-    'rest_framework.authtoken',
     'corsheaders',
     'rest_framework_simplejwt',
     # own apps
-    'backend.authapp',
-    'backend.mainapp',
+    'authapp',
+    'mainapp',
 ]
 
 MIDDLEWARE = [

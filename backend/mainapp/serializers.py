@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from backend.mainapp.models import Manufacturer, Car
+from mainapp.models import Manufacturer, Car
 
 
 class ManufacturerSerializer(ModelSerializer):

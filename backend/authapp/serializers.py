@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from backend.authapp.models import UserProfile
+from authapp.models import UserProfile
 
 
 class UserProfileSerializer(ModelSerializer):
