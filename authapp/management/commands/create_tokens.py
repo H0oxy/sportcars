@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from rest_framework.authtoken.models import Token
 
-from authapp.models import UserProfile
+from backend.authapp import UserProfile
 
 
 class Command(BaseCommand):
